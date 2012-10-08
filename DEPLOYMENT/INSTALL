@@ -1,0 +1,6 @@
+INSTRUCCIONES DE INSTALACION (Debian / Ubuntu)
+
+- Copiar cobramusic.conf a /etc/apache2/sites-available
+- sudo a2ensite cobramusic.conf
+- sudo service apache2 restart
+- (en la carpeta de manage.py) python manage.py collectstatic

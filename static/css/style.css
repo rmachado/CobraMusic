@@ -4,7 +4,6 @@ body {
 .header {
 	padding: 10px;
 	background-color: #DDDDDD;
-	font-family: 'Michroma', sans-serif;
 	width: 100%;
 	margin-top: 0px;
 	height: 80px;
@@ -18,11 +17,29 @@ body {
 	float: left;
 }
 
-.header .title {
+.title {
+	font-weight: normal;
+	font-family: 'Michroma', sans-serif;
 	font-size: 32px;
 	color: #666666; 
 }
-.header .title span {
-	font-weight: normal;
+.title span {
 	color: #0D88C1;
+}
+
+.subtitle {
+	font-weight: normal;
+	font-family: 'Michroma', sans-serif;
+	font-size: 24px;
+	color: #666666; 
+}
+.subtitle span {
+	color: #0D88C1;
+}
+
+.playlist_container {
+	float: right;
+	width: 250px;
+	height: 100%;
+}
 }

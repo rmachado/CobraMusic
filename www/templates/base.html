@@ -1,17 +1,21 @@
 <!DOCTYPE html>  
+{% load dajaxice_templatetags %}
 <html lang="en"> 
     <head>  
+		{% load static %}
         <meta charset="utf-8">  
-		<link href="static/css/jplayer.css" rel="stylesheet" type="text/css" />
+		<link href="{% static 'css/jplayer.css' %}" rel="stylesheet" type="text/css" />
 		<link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
-		<script type="text/javascript" src="/static/js/add-on/jquery-1.8.2.min.js"></script>
-		<script type="text/javascript" src="/static/js/jquery.jplayer.min.js"></script>
-		<script type="text/javascript" src="/static/js/add-on/jplayer.playlist.min.js"></script>
+		<script type="text/javascript" src="{% static 'js/add-on/jquery-1.8.2.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'dajax/jquery.dajax.core.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.jplayer.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/add-on/jplayer.playlist.min.js' %}"></script>
         <title>CobraMusic</title>
         <meta name="description" content="CobraMusic">
         <meta name="author" content="SitePoint">
-        <link rel="stylesheet" href="/static/css/style.css">
-        <link rel="stylesheet" href="/static/css/jplayer.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/jplayer.css' %}">
+        {% dajaxice_js_import %}
         <!--[if lt IE 9]>  
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
         <![endif]-->  
@@ -20,6 +24,16 @@
     	<div class="header">
     		<div class='titleframe'>
 		        <a href="/" class="title"><span>Cobra</span>Music</a>
+		    </div>
+		    <div class="user-controls">
+		    	{% if is_logged %}
+		    		<span>Bienvenido {{ username }}!</span>
+		    	{% else %}
+			    	<form action="" method="post" id="my_form" accept-charset="utf-8">
+				    	{{ form.as_p }}
+				    	<p><input type="button" value="Send" onclick="send_form();"></p>
+					</form>
+				{% endif %}
 		    </div>
 		    <div id="jquery_jplayer_1"></div>
 			<div id="jp_container_1" class="jp-audio">
@@ -61,6 +75,9 @@
         </div>
 		<script type="text/javascript">
 		//<![CDATA[
+		function send_form(){
+		    Dajaxice.Main.send_form(Dajax.process,{'form':$('#my_form').serialize(true)});
+		}
 		$(document).ready(function(){
 		
 			new jPlayerPlaylist({

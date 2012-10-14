@@ -1,5 +1,6 @@
 INSTRUCCIONES DE INSTALACION (Debian / Ubuntu)
 
+- sudo pip install django-dajax django-dajaxice
 - Copiar cobramusic.conf a /etc/apache2/sites-available
 - sudo a2ensite cobramusic.conf
 - sudo service apache2 restart

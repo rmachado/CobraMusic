@@ -63,7 +63,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages",
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages'
 )
 
 # Absolute path to the directory static files should be collected to.
@@ -86,11 +87,12 @@ STATICFILES_DIRS = (
 
 # List of finder classes that know how to find static files in
 # various locations.
-#STATICFILES_FINDERS = (
-#    'django.contrib.staticfiles.finders.FileSystemFinder',
-#    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'dajaxice.finders.DajaxiceFinder',
 ##    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-#)
+)
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '1x3v$gh-$0o^*a@&amp;zaex#hq41=ez6g(l8+bo3=&amp;@o^d=$4325q'
@@ -99,7 +101,7 @@ SECRET_KEY = '1x3v$gh-$0o^*a@&amp;zaex#hq41=ez6g(l8+bo3=&amp;@o^d=$4325q'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -132,6 +134,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dajax',
+    'dajaxice',
     'Main',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',

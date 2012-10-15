@@ -42,4 +42,9 @@ body {
 	width: 250px;
 	height: 100%;
 }
+
+.user-controls {
+	float: right;
+	width: auto;
+	height: 80px;
 }
